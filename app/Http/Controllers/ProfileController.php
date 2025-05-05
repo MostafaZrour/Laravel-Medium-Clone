@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\User;
+use Illuminate\Validation\Rule;
+use Illuminate\Foundation\Http\FormRequest;
 
 class ProfileController extends Controller
 {
@@ -26,8 +29,12 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
-
+        $data = $request->validated();
+        $image = $data['image'] ?? null ;
+        if($image){
+            $data['image'] = $image->store('avatars','public');
+        }
+        $request->user()->fill($data);
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
