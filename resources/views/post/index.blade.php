@@ -3,9 +3,9 @@
         <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <x-category-tabs >
+                    <x-category-tabs>
                         No Categories
-                </x-category-tabs >
+                    </x-category-tabs>
                 </div>
             </div>
             <div class="mt-8 text-gray-900">
@@ -15,8 +15,8 @@
                     <div>
                         <p class="text-gray-400 text-center py-16">No Posts Found...</p>
                     </div>
-                    @endforelse
-                    {{ $posts->onEachSide(1)->links() }}
+                @endforelse
+                {{ $posts->onEachSide(1)->links() }}
             </div>
         </div>
     </div>

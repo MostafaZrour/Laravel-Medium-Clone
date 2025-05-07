@@ -1,5 +1,4 @@
 <x-app-layout>
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
@@ -14,16 +13,7 @@
                             @endforelse
                         </div>
                     </div>
-                    <div class="w-[320px] border-1 px-8">
-                        <x-user-avatar :user="$user" :size="24" />
-                        <h3>{{ $user->name }}</h3>
-                        <p class="text-gray-500">{{$user->followers->count()}} Followers</p>
-                        <p>{{ $user->bio }}</p>
-                        <div class="mt-4">
-                            <button class="bg-emerald-600 px-4 py-2 text-white rounded-full">Follow</button>
-                        </div>
-                    </div>
-                    {{-- <x-follow-ctr :user="$user">
+                    <x-follow-ctr :user="$user">
                         <x-user-avatar :user="$user" size="w-24 h-24" />
                         <h3>{{ $user->name }}</h3>
                         <p class="text-gray-500">
@@ -41,7 +31,7 @@
                                 </button>
                             </div>
                         @endif
-                    </x-follow-ctr> --}}
+                    </x-follow-ctr>
                 </div>
             </div>
         </div>
