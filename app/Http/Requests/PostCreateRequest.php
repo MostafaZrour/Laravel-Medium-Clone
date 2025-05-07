@@ -14,7 +14,7 @@ class PostCreateRequest extends FormRequest
         return true;
     }
 
-    /**
+        /**
      * Get the validation rules that apply to the request.
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
@@ -26,7 +26,7 @@ class PostCreateRequest extends FormRequest
             'title' => 'required',
             'content' => 'required',
             'category_id' => 'required|exists:categories,id',
-            'published_at' => 'nullable|datetime'
+            'published_at' => 'nullable|date'
         ];
     }
 }

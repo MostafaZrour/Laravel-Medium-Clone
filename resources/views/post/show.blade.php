@@ -14,12 +14,12 @@
                                 {{ $post->user->name }}
                             </a>
 
-                            @auth
+                            @if (auth()->user() && auth()->user()->id !== $post->user->id)
                                 &middot;
                                 <button x-text="following ? 'Unfollow' : 'Follow'"
                                     :class="following ? 'text-red-600' : 'text-emerald-600'" @click="follow()">
                                 </button>
-                            @endauth
+                            @endif
                         </x-follow-ctr>
 
                         <div class="flex gap-2 text-sm text-gray-500">
@@ -34,7 +34,7 @@
 
                 @if ($post->user_id === Auth::id())
                     <div class="py-4 mt-8 border-t border-b border-gray-200">
-                        <x-primary-button :href="{{ route('post.edit',$post->slug) }}">
+                        <x-primary-button href="{{ route('post.edit',$post->slug) }}">
                             Edit Post
                         </x-primary-button>
                         <form class="inline-block" action="{{ route('post.destroy', $post) }}" method="post">
@@ -53,7 +53,7 @@
 
                 <!-- Content Section -->
                 <div class="mt-8">
-                    <img src="{{ $post->imageUrl() }}" alt="{{ $post->title }}" class="w-full">
+                    <img src="{{ $post->getFirstMediaUrl('posts') }}" alt="{{ $post->title }}" class="w-full">
 
                     <div class="mt-4">
                         {{ $post->content }}

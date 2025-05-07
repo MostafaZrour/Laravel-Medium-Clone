@@ -15,6 +15,7 @@ class Post extends Model implements HasMedia
 {
     use HasFactory;
     use InteractsWithMedia;
+    use HasSlug;
 
     protected $fillable = [
         // 'image',
@@ -46,6 +47,12 @@ class Post extends Model implements HasMedia
     /**
      * Get the options for generating the slug.
      */
+    public function getSlugOptions() : SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug');
+    }
 
     public function user()
     {

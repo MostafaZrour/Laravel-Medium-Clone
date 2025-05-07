@@ -22,11 +22,11 @@
                     <div class="mt-4">
                         <x-input-label for="category_id" :value="__('Category')" />
                         <select name="category_id" id="category_id"
-                        class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option value="">Select a Category</option>
                             @foreach ($categories as $category)
-                                <option value="{{ $category->id }}"
-                                    @selected(old('category_id') == $category->id)>{{ $category->name }}</option>
+                                <option value="{{ $category->id }}" @selected(old('category_id') == $category->id)>{{ $category->name }}
+                                </option>
                             @endforeach
                         </select>
                         <x-input-error :messages="$errors->get('category_id')" class="mt-2" />
@@ -34,9 +34,16 @@
                     <!-- Content -->
                     <div class="mt-4">
                         <x-input-label for="content" :value="__('Content')" />
-                        <x-input-textarea id="content" class="block mt-1 w-full" type="text" name="content"
-                            >{{ old('content') }}</x-input-textarea>
+                        <x-input-textarea id="content" class="block mt-1 w-full" type="text"
+                            name="content">{{ old('content') }}</x-input-textarea>
                         <x-input-error :messages="$errors->get('content')" class="mt-2" />
+                    </div>
+                    <!-- Published At -->
+                    <div class="mt-4">
+                        <x-input-label for="published_at" :value="__('Published At')" />
+                        <x-text-input id="published_at" class="block mt-1 w-full" type="datetime-local"
+                            name="published_at" :value="old('published_at')" autofocus />
+                        <x-input-error :messages="$errors->get('published_at')" class="mt-2" />
                     </div>
                     <x-primary-button class="mt-4">
                         Sumbit

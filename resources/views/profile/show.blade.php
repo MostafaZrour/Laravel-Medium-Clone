@@ -26,8 +26,7 @@
                                 <button @click="follow()" class="rounded-full px-4 py-2 text-white"
                                 x-text="following ? 'Unfollow' : 'Follow'"
                                 :class="following ? 'bg-red-600' : 'bg-emerald-600'"
-                                >
-                                    
+                                >                                
                                 </button>
                             </div>
                         @endif
